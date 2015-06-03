@@ -1880,6 +1880,9 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     }
 
 
+    if(GetBoolArg("-addrindex", false))
+    {
+
     // Write Address Index
     BOOST_FOREACH(CTransaction& tx, vtx)
     {
@@ -1924,6 +1927,8 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
                 }
 	    }
 	}
+    }
+
     }
 
     // Update block index on disk without changing it in memory.
