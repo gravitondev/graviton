@@ -1192,6 +1192,12 @@ int64_t GetProofOfStakeReward(int nHeight, int64_t nCoinAge, int64_t nFees)
     {
         nSubsidy = 30 * COIN;
     }
+    
+    // Hardfork for inflation control
+    if(nHeight > 67000)
+    {
+	nSubsidy = 0.25 * COIN; // 0.25 is equiv of ~3%/yr at 3M coin supply
+    }
 
     return nSubsidy + nFees;
 }
